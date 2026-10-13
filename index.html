@@ -5,14 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Ryan &amp; Tina</title>
     <meta name="description" content="Ryan and Tina are getting married on May 15, 2027 in Easthampton, MA. Details for guests." />
-    <meta name="theme-color" content="#1d1a22" />
+    <meta name="theme-color" content="#f8f4ec" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <meta property="og:title" content="Ryan &amp; Tina" />
     <meta property="og:description" content="We're getting married. Saturday, May 15, 2027, Easthampton, MA." />
     <meta property="og:url" content="https://ryan-tina.wedding/" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Pinyon+Script&display=swap" rel="stylesheet" />
   </head>
   <body>
     <canvas id="bg" aria-hidden="true"></canvas>
+
+    <!-- shared watercolor filters -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+      <defs>
+        <filter id="wc" x="-25%" y="-40%" width="150%" height="180%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.028" numOctaves="3" seed="7" result="t" />
+          <feDisplacementMap in="SourceGraphic" in2="t" scale="28" xChannelSelector="R" yChannelSelector="G" result="d" />
+          <feGaussianBlur in="d" stdDeviation="0.9" />
+        </filter>
+        <filter id="ink" x="-5%" y="-200%" width="110%" height="500%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="3" result="t" />
+          <feDisplacementMap in="SourceGraphic" in2="t" scale="4" xChannelSelector="R" yChannelSelector="G" />
+        </filter>
+      </defs>
+    </svg>
 
     <header class="hero">
       <p class="eyebrow">We're getting married</p>
@@ -22,13 +40,17 @@
     </header>
 
     <main class="details">
-      <section id="when">
+      <section id="when" style="--wash: var(--sage)">
+        <svg class="wash" viewBox="0 0 300 120" preserveAspectRatio="none" aria-hidden="true"><rect x="14" y="24" width="272" height="72" rx="36" filter="url(#wc)" /></svg>
         <h2>When</h2>
         <p class="lead">Saturday, May 15, 2027 at 2 PM</p>
         <p><a class="button" href="/ryan-and-tina.ics" download>Add to calendar</a></p>
       </section>
 
-      <section id="where">
+      <svg class="rule" viewBox="0 0 300 12" preserveAspectRatio="none" aria-hidden="true"><path d="M6 6 C 70 3, 150 9, 294 6" filter="url(#ink)" /></svg>
+
+      <section id="where" style="--wash: var(--sky)">
+        <svg class="wash" viewBox="0 0 300 120" preserveAspectRatio="none" aria-hidden="true"><rect x="14" y="24" width="272" height="72" rx="36" filter="url(#wc)" /></svg>
         <h2>Where</h2>
         <p class="lead">Our home</p>
         <p>
@@ -39,13 +61,19 @@
         <p>There's parking on the front lawn, but carpooling will make things easier for everyone.</p>
       </section>
 
-      <section id="wear">
+      <svg class="rule" viewBox="0 0 300 12" preserveAspectRatio="none" aria-hidden="true"><path d="M6 6 C 90 9, 180 3, 294 7" filter="url(#ink)" /></svg>
+
+      <section id="wear" style="--wash: var(--blush)">
+        <svg class="wash" viewBox="0 0 300 120" preserveAspectRatio="none" aria-hidden="true"><rect x="14" y="24" width="272" height="72" rx="36" filter="url(#wc)" /></svg>
         <h2>What to wear</h2>
         <p class="lead">Relaxed</p>
         <p>Sundresses, khakis, and comfortable shoes are all welcome. It's a backyard, so dress for grass.</p>
       </section>
 
-      <section id="food">
+      <svg class="rule" viewBox="0 0 300 12" preserveAspectRatio="none" aria-hidden="true"><path d="M6 7 C 60 4, 200 10, 294 5" filter="url(#ink)" /></svg>
+
+      <section id="food" style="--wash: var(--gold)">
+        <svg class="wash" viewBox="0 0 300 120" preserveAspectRatio="none" aria-hidden="true"><rect x="14" y="24" width="272" height="72" rx="36" filter="url(#wc)" /></svg>
         <h2>Food</h2>
         <p>Farm-fresh and made from scratch by <a href="https://wheelhousefarm.com" target="_blank" rel="noopener">Wheelhouse</a> in Amherst, served buffet style.</p>
 
@@ -71,19 +99,28 @@
         </ul>
       </section>
 
-      <section id="kids">
+      <svg class="rule" viewBox="0 0 300 12" preserveAspectRatio="none" aria-hidden="true"><path d="M6 5 C 100 9, 170 2, 294 7" filter="url(#ink)" /></svg>
+
+      <section id="kids" style="--wash: var(--sage)">
+        <svg class="wash" viewBox="0 0 300 120" preserveAspectRatio="none" aria-hidden="true"><rect x="14" y="24" width="272" height="72" rx="36" filter="url(#wc)" /></svg>
         <h2>Kids</h2>
         <p class="lead">Welcome!</p>
         <p>There will be lawn games and plenty of room to run around. Feel free to bring your own lawn games, outdoor toys, and the like.</p>
       </section>
 
-      <section id="gifts">
+      <svg class="rule" viewBox="0 0 300 12" preserveAspectRatio="none" aria-hidden="true"><path d="M6 6 C 80 2, 160 10, 294 6" filter="url(#ink)" /></svg>
+
+      <section id="gifts" style="--wash: var(--blush)">
+        <svg class="wash" viewBox="0 0 300 120" preserveAspectRatio="none" aria-hidden="true"><rect x="14" y="24" width="272" height="72" rx="36" filter="url(#wc)" /></svg>
         <h2>Gifts</h2>
         <p class="lead">None, please</p>
         <p>Having you there is the gift.</p>
       </section>
 
-      <section id="stay">
+      <svg class="rule" viewBox="0 0 300 12" preserveAspectRatio="none" aria-hidden="true"><path d="M6 7 C 70 10, 190 3, 294 6" filter="url(#ink)" /></svg>
+
+      <section id="stay" style="--wash: var(--sky)">
+        <svg class="wash" viewBox="0 0 300 120" preserveAspectRatio="none" aria-hidden="true"><rect x="14" y="24" width="272" height="72" rx="36" filter="url(#wc)" /></svg>
         <h2>Staying nearby</h2>
         <p>If you'd like to stay overnight, we've reserved a block of rooms at <span class="placeholder">[hotel name]</span>.</p>
         <p><span class="placeholder">[booking link and details coming soon]</span></p>
@@ -91,7 +128,8 @@
     </main>
 
     <footer>
-      <p>Ryan &amp; Tina &middot; May 15, 2027</p>
+      <p class="script">Ryan &amp; Tina</p>
+      <p>May 15, 2027</p>
     </footer>
 
     <script type="module" src="/src/main.ts"></script>

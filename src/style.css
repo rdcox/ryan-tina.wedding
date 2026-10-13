@@ -1,18 +1,22 @@
 :root {
-  --bg: #1d1a22;
-  --bg-2: #2b2330;
-  --ink: #f4ead9;
-  --ink-soft: #c9b9a6;
-  --accent: #e6c79c;
-  --card: rgba(29, 26, 34, 0.55);
-  --rule: rgba(230, 199, 156, 0.25);
+  --paper: #f8f4ec;
+  --ink: #3a373d;
+  --ink-soft: #77716e;
+  --sage: #a8bf9f;
+  --sage-deep: #6f8f6a;
+  --blush: #ecb9bb;
+  --gold: #e2c47e;
+  --gold-deep: #b8923c;
+  --sky: #b5cbdd;
+  --serif: "Cormorant Garamond", "Iowan Old Style", Georgia, serif;
+  --script: "Pinyon Script", "Snell Roundhand", cursive;
 }
 
 * { box-sizing: border-box; }
 
 html {
   scroll-behavior: smooth;
-  background: var(--bg);
+  background: var(--paper);
 }
 
 html, body {
@@ -21,10 +25,23 @@ html, body {
 }
 
 body {
-  font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  line-height: 1.5;
   color: var(--ink);
-  background: radial-gradient(120% 80% at 50% 20%, var(--bg-2) 0%, var(--bg) 70%) no-repeat;
-  line-height: 1.55;
+  background: var(--paper);
+}
+
+/* paper grain */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.4;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='320'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.42 0 0 0 0 0.38 0 0 0 0 0.33 0 0 0 0.22 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 #bg {
@@ -37,7 +54,7 @@ body {
 }
 
 a {
-  color: var(--accent);
+  color: var(--sage-deep);
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
 }
@@ -46,7 +63,8 @@ a {
 
 .hero {
   position: relative;
-  z-index: 1;
+  z-index: 2;
+  text-shadow: 0 0 18px var(--paper), 0 0 36px var(--paper);
   min-height: 100vh;
   min-height: 100dvh;
   display: grid;
@@ -57,32 +75,33 @@ a {
 }
 
 .eyebrow {
-  margin: 0 0 0.75rem;
-  font-size: 0.85rem;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
+  margin: 0 0 0.5rem;
+  font-family: var(--script);
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  color: var(--sage-deep);
 }
 
 h1 {
   margin: 0;
-  font-weight: 400;
-  font-size: clamp(2.6rem, 10vw, 6rem);
-  line-height: 1.05;
-  letter-spacing: 0.02em;
+  font-weight: 500;
+  font-size: clamp(3.2rem, 12vw, 7.5rem);
+  line-height: 1;
+  letter-spacing: 0.01em;
 }
 
 .amp {
-  color: var(--accent);
   font-style: italic;
-  padding: 0 0.1em;
+  font-weight: 400;
+  font-size: 0.95em;
+  color: var(--gold-deep);
+  padding: 0 0.08em;
 }
 
 .sub {
-  margin: 1.25rem 0 0;
-  font-size: 1.1rem;
-  color: var(--ink-soft);
+  margin: 1.2rem 0 0;
+  font-size: clamp(1.15rem, 2.4vw, 1.5rem);
   font-style: italic;
+  color: var(--ink-soft);
 }
 
 .cue {
@@ -94,15 +113,15 @@ h1 {
   margin-left: -22px;
   display: grid;
   place-content: center;
-  opacity: 0.7;
+  opacity: 0.6;
   animation: bob 2.4s ease-in-out infinite;
 }
 
 .cue span {
   width: 12px;
   height: 12px;
-  border-right: 1.5px solid var(--accent);
-  border-bottom: 1.5px solid var(--accent);
+  border-right: 1.5px solid var(--ink-soft);
+  border-bottom: 1.5px solid var(--ink-soft);
   transform: rotate(45deg);
 }
 
@@ -110,46 +129,63 @@ h1 {
 
 .details {
   position: relative;
-  z-index: 1;
-  max-width: 40rem;
+  z-index: 2;
+  max-width: 38rem;
   margin: 0 auto;
-  padding: 2rem 16px 4rem;
+  padding: 1rem 16px 3rem;
+  background: linear-gradient(90deg, rgba(248, 244, 236, 0), rgba(248, 244, 236, 0.78) 12%, rgba(248, 244, 236, 0.78) 88%, rgba(248, 244, 236, 0));
 }
 
 section {
-  background: var(--card);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  border: 1px solid var(--rule);
-  border-radius: 14px;
-  padding: 1.6rem 1.5rem;
-  margin-bottom: 1.25rem;
+  position: relative;
+  padding: 1.6rem 0.5rem 1.8rem;
+}
+
+.wash {
+  position: absolute;
+  top: 0.55rem;
+  left: -0.4rem;
+  width: 11.5rem;
+  height: 4.6rem;
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.wash rect {
+  fill: var(--wash);
 }
 
 h2 {
-  margin: 0 0 0.5rem;
-  font-size: 0.8rem;
+  position: relative;
+  z-index: 1;
+  margin: 0 0 0.3rem;
+  font-family: var(--script);
   font-weight: 400;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--accent);
+  font-size: 2.4rem;
+  line-height: 1.1;
+  color: var(--ink);
 }
 
 h3 {
   margin: 1.4rem 0 0.4rem;
-  font-size: 1rem;
-  font-weight: 400;
-  font-style: italic;
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   color: var(--ink-soft);
 }
 
 .lead {
-  margin: 0 0 0.6rem;
-  font-size: 1.6rem;
-  line-height: 1.2;
+  margin: 0 0 0.5rem;
+  font-size: 1.9rem;
+  font-weight: 500;
+  line-height: 1.15;
 }
 
 section p {
+  position: relative;
+  z-index: 1;
   margin: 0 0 0.8rem;
 }
 
@@ -158,50 +194,77 @@ section p:last-child {
 }
 
 ul {
+  position: relative;
+  z-index: 1;
   margin: 0;
   padding-left: 1.2rem;
 }
 
 li {
-  margin-bottom: 0.45rem;
+  margin-bottom: 0.4rem;
 }
 
-li:last-child {
-  margin-bottom: 0;
+li::marker {
+  color: var(--gold-deep);
+}
+
+.rule {
+  display: block;
+  width: min(100%, 22rem);
+  height: 12px;
+  margin: 0.2rem auto;
+  opacity: 0.55;
+}
+
+.rule path {
+  fill: none;
+  stroke: var(--ink-soft);
+  stroke-width: 1.3;
+  stroke-linecap: round;
 }
 
 .button {
   display: inline-block;
-  padding: 0.55rem 1.1rem;
-  border: 1px solid var(--accent);
+  padding: 0.5rem 1.2rem;
+  border: 1.5px solid var(--ink);
   border-radius: 999px;
+  color: var(--ink);
   text-decoration: none;
-  font-size: 0.95rem;
-  letter-spacing: 0.05em;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transform: rotate(-1deg);
+  transition: background 0.2s;
 }
 
 .button:hover {
-  background: rgba(230, 199, 156, 0.12);
+  background: rgba(168, 191, 159, 0.35);
 }
 
 .placeholder {
-  color: var(--accent);
-  border-bottom: 1px dashed var(--accent);
+  color: var(--gold-deep);
+  border-bottom: 1px dashed var(--gold-deep);
   font-style: italic;
 }
 
 footer {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   text-align: center;
-  padding: 0 16px 2.5rem;
+  padding: 0 16px 3rem;
   color: var(--ink-soft);
-  font-size: 0.9rem;
-  font-style: italic;
 }
 
 footer p {
   margin: 0;
+}
+
+footer .script {
+  font-family: var(--script);
+  font-size: 2.2rem;
+  color: var(--ink);
+  line-height: 1.1;
 }
 
 /* ---------- motion ---------- */
