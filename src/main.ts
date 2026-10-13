@@ -60,13 +60,12 @@ function start(canvas: HTMLCanvasElement) {
   addEventListener('resize', resize);
   resize();
 
-  const clock = new THREE.Clock();
-  let last = 0;
+  const timer = new THREE.Timer();
 
   function frame() {
-    const t = clock.getElapsedTime();
-    const dt = Math.min(t - last, 0.05);
-    last = t;
+    timer.update();
+    const t = timer.getElapsed();
+    const dt = Math.min(timer.getDelta(), 0.05);
 
     for (let i = 0; i < COUNT; i++) {
       let y = positions[i * 3 + 1] + speeds[i] * dt;
