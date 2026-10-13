@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//ryan-tina.wedding//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:wedding-2027-05-15@ryan-tina.wedding
+DTSTAMP:20261013T210000Z
+DTSTART:20270515T180000Z
+DTEND:20270515T230000Z
+SUMMARY:Ryan & Tina's Wedding
+LOCATION:6 Crescent Street\, Easthampton\, MA 01027
+DESCRIPTION:Relaxed dress\, kids welcome\, no gifts. Details at https://ryan-tina.wedding
+URL:https://ryan-tina.wedding
+END:VEVENT
+END:VCALENDAR
